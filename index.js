@@ -2,10 +2,17 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
-app.listen(3000)
+const port = 3000
+
+app.listen(port, () => {
+    console.log(`example app listening at http://localhost:${port}`)
+})
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
 app.post('/', async (req, res) => {
     try{
