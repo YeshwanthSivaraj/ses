@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
     try{
         if (req.is('text/*')) {
             req.body = JSON.parse(req.body)
@@ -23,7 +23,7 @@ app.post('/', (req, res) => {
 
         const event = body.eventType.toLowerCase()
         const eventData = body
-        console.log(JSON.stringify(eventData, null 2))
+        console.log(JSON.stringify(eventData, null,2))
 
         const domain = event_data.mail.tags['ses:from-domain'][0]
         const messageId = event_data.mail.messageId
